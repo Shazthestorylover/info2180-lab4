@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let box_8 = board_ID.children[7];
     let box_9 = board_ID.children[8];
 
-
+    // Setting the class of each box in the grid
     box_1.className = "square";
     box_2.className = "square";
     box_3.className = "square";
@@ -33,45 +33,71 @@ document.addEventListener("DOMContentLoaded", function(){
     var count = 0;
     var index = 0;
 
-    box_1.addEventListener("click", function()
-        {
-            if (count%2 == 0)
-            {
-                box_1.className = "square X";
-                box_1.innerHTML = "X";
-                count++;
-            }
-            else
-            {
-                box_1.className = "square O";
-                box_1.innerHTML = "O";
-                count++;
-            }
-        });
 
-
-    /* for (index=0; index<9; index++)
+    for (index = 0; index < 9; index++)
     {
-        if (count%2 == 0)
+        if (count%2 === 0)
         {
             board_ID.children[index].addEventListener("click", function()
             {
-                board_ID.children[index].className = "square X";
-                board_ID.children[index].innerHTML = "X";
-                count++;
+                this.className = "square X";
+                this.innerHTML = "X";
+                console.log(count, 'X');
             });                         
         } 
-        else
+        else if (count%2 !== 0)
         {
             board_ID.children[index].addEventListener("click", function()
             {
-                board_ID.children[index].className = "square O";
-                board_ID.children[index].innerHTML = "O";
-                count++;
+                this.className = "square O";
+                this.innerHTML = "O";
+                console.log(count, 'O');
             });            
         }
-    } */
 
-    //box_1.addEventListener("click", function(){}
+        count++;
+
+        
+
+    } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
     
