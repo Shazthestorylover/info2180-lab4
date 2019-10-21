@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
 
     const game_ID = document.getElementById("game");
     const status_ID = document.getElementById("status");
@@ -27,72 +27,118 @@ document.addEventListener("DOMContentLoaded", function(){
     box_7.className = "square";
     box_8.className = "square";
     box_9.className = "square";
-    
-    //  Commit the above code first then cut out code below 
-    // before committing eveything else to maintain order.
-    var count = 0;
-    var index = 0;
+
+    var mainBoard;
+    var count = 0; // Meant to keep tracks of the number of clicks.
+    var index = 0; // Meant to traverse the board.
+
+    var players = [];
+    var markers = ["X", "O"];
+    players[0] = "player-0";
+    players[1] = "player-1";
+    var whoseTurn = 0;
 
 
-    for (index = 0; index < 9; index++)
-    {
-        if (count%2 === 0)
-        {
-            board_ID.children[index].addEventListener("click", function()
-            {
-                this.className = "square X";
-                this.innerHTML = "X";
-                console.log(count, 'X');
-            });                         
-        } 
-        else if (count%2 !== 0)
-        {
-            board_ID.children[index].addEventListener("click", function()
-            {
-                this.className = "square O";
-                this.innerHTML = "O";
-                console.log(count, 'O');
-            });            
+    const winCombinations = [
+        // Normal winning combinations --> From left to right (horizontally) on board.
+        [box_1, box_2, box_3],
+        [box_4, box_5, box_6],
+        [box_7, box_8, box_9],
+
+        // Other winning combinations --> Vertically (from top to bottom)
+        [box_1, box_4, box_7],
+        [box_2, box_5, box_8],
+        [box_3, box_6, box_9],
+
+        // Unique winning combinations --> Diagonally across the board
+        [box_3, box_5, box_7],
+        [box_1, box_5, box_9],
+
+    ];
+
+
+
+
+    //-----------------------Defining functions used to manpulate the game.----------------------------------------
+
+
+
+    function togglePlayers() {
+        if (whoseTurn == 0) {
+            whoseTurn = 1;
+        } else {
+            whoseTurn = 0;
+        }
+    }
+
+
+    function playGame() {
+
+        for (index = 0; index < 9; index++) {
+            if (count % 2 == 0 && whoseTurn == 0) {
+                board_ID.children[index].addEventListener("click", function() {
+                    this.innerHTML = markers[whoseTurn];
+                    if (board_ID.children[index] == markers[0]) {
+                        this.className = "square X";
+                        this.innerHTML = "X";
+                    } else if (board_ID.children[index] == markers[1]) {
+                        this.className = "square O";
+                        this.innerHTML = "O";
+                    }
+                    console.log(count++, markers[whoseTurn]);
+                    togglePlayers();
+                });
+            } else if (count % 2 != 0 && whoseTurn == 0) {
+                board_ID.children[index].addEventListener("click", function() {
+                    this.innerHTML = markers[whoseTurn];
+                    if (board_ID.children[index] == markers[0]) {
+                        this.className = "square X";
+                        this.innerHTML = "X";
+                    } else if (board_ID.children[index] == markers[1]) {
+                        this.className = "square O";
+                        this.innerHTML = "O";
+                    }
+                    console.log(count++, markers[whoseTurn]);
+                    togglePlayers();
+                });
+            } else if (count % 2 == 0 && whoseTurn == 1) {
+                board_ID.children[index].addEventListener("click", function() {
+                    this.innerHTML = markers[whoseTurn];
+                    if (board_ID.children[index] == markers[0]) {
+                        this.className = "square X";
+                        this.innerHTML = "X";
+                    } else if (board_ID.children[index] == markers[1]) {
+                        this.className = "square O";
+                        this.innerHTML = "O";
+                    }
+
+                    console.log(count++, markers[whoseTurn]);
+                    togglePlayers();
+                });
+            } else if (count % 2 != 0 && whoseTurn == 1) {
+                board_ID.children[index].addEventListener("click", function() {
+                    this.innerHTML = markers[whoseTurn];
+                    if (board_ID.children[index] == markers[0]) {
+                        this.className = "square X";
+                        this.innerHTML = "X";
+                    } else if (board_ID.children[index] == markers[1]) {
+                        this.className = "square O";
+                        this.innerHTML = "O";
+                    }
+
+                    console.log(count++, markers[whoseTurn]);
+                    togglePlayers();
+                });
+
+            }
+
+            //count++;
+
         }
 
-        count++;
+    }
 
-        
-
-    } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    playGame();
 
 
 
@@ -100,4 +146,3 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 });
-    
