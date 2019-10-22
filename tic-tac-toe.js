@@ -73,67 +73,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     function playGame() {
-
         for (index = 0; index < 9; index++) {
-            if (count % 2 == 0 && whoseTurn == 0) {
+            if (count % 2 == 0 && players[0]) {
                 board_ID.children[index].addEventListener("click", function() {
-                    this.innerHTML = markers[whoseTurn];
-                    if (board_ID.children[index] == markers[0]) {
-                        this.className = "square X";
-                        this.innerHTML = "X";
-                    } else if (board_ID.children[index] == markers[1]) {
-                        this.className = "square O";
-                        this.innerHTML = "O";
-                    }
-                    console.log(count++, markers[whoseTurn]);
-                    togglePlayers();
-                });
-            } else if (count % 2 != 0 && whoseTurn == 0) {
-                board_ID.children[index].addEventListener("click", function() {
-                    this.innerHTML = markers[whoseTurn];
-                    if (board_ID.children[index] == markers[0]) {
-                        this.className = "square X";
-                        this.innerHTML = "X";
-                    } else if (board_ID.children[index] == markers[1]) {
-                        this.className = "square O";
-                        this.innerHTML = "O";
-                    }
-                    console.log(count++, markers[whoseTurn]);
-                    togglePlayers();
-                });
-            } else if (count % 2 == 0 && whoseTurn == 1) {
-                board_ID.children[index].addEventListener("click", function() {
-                    this.innerHTML = markers[whoseTurn];
-                    if (board_ID.children[index] == markers[0]) {
-                        this.className = "square X";
-                        this.innerHTML = "X";
-                    } else if (board_ID.children[index] == markers[1]) {
-                        this.className = "square O";
-                        this.innerHTML = "O";
-                    }
+                    this.className = "square X";
+                    this.innerHTML = "X";
 
-                    console.log(count++, markers[whoseTurn]);
+                    console.log(count++, 'X');
                     togglePlayers();
                 });
-            } else if (count % 2 != 0 && whoseTurn == 1) {
+            } else {
                 board_ID.children[index].addEventListener("click", function() {
-                    this.innerHTML = markers[whoseTurn];
-                    if (board_ID.children[index] == markers[0]) {
-                        this.className = "square X";
-                        this.innerHTML = "X";
-                    } else if (board_ID.children[index] == markers[1]) {
-                        this.className = "square O";
-                        this.innerHTML = "O";
-                    }
+                    this.className = "square O";
+                    this.innerHTML = "O";
 
-                    console.log(count++, markers[whoseTurn]);
+                    console.log(count++, 'O');
                     togglePlayers();
                 });
-
             }
-
             //count++;
 
+        }
+
+        // Displaying modified style of box when players hover over them
+        if (document.querySelector("div").className == "square") {
+            document.getElementsByClassName("hover");
         }
 
     }
